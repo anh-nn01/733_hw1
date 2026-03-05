@@ -1,6 +1,9 @@
 # ignore virtual env
 venv/
 
+# ignore visualizations => too heavy
+visuals/
+
 # ignore data
 Calibration_Imgs.zip
 Calibration_Imgs/
