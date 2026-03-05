@@ -7,7 +7,7 @@ UID: 119 385 173
 
 ## Overview: Zhang's Camera Calibration
 
-This project implements Zhang's camera calibration method as described in:
+This project implements Zhang's camera calibration method:
 
 > Zhengyou Zhang, ["A Flexible New Technique for Camera Calibration,"](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/tr98-71.pdf) IEEE Transactions on Pattern Analysis and Machine Intelligence, 2000.
 
