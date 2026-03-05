@@ -5,7 +5,7 @@ Directory ID: anhu
 UID: 119 385 173
 ```
 
-## Overview: Zhang's Camera Calibration
+## I. Overview: Zhang's Camera Calibration
 
 This project implements Zhang's camera calibration method:
 
@@ -16,54 +16,28 @@ Specifically, provided a set of checkerboard calibration images, we:
 2. Estimate the **Radial distortion coefficients** ($k_x, k_y$)
 3. Estimate the **Camera poses** (extrinsics rotation `R` and translation `t`) for each image
 
-## Environment Setup
+## II. Environment Setup
 Use `Python 3.12` (recommended)
 ```sh
 # install dependencies
 pip install -r requirements.txt
 ```
 
-## Usage guide
+## III. Usage guide
 
-### Basic (default paths)
+### a. Basic (default paths)
 Assuming the calibration images are in `./Calibration_Imgs/`, run the following script to save the results to `./results/`
 ```bash
 python3 Wrapper.py
 ```
 
-### Custom paths
+### b. Custom image paths
 Otherwise, specify path in the following script:
 ```bash
 python3 Wrapper.py --img_dir=<path_to_images>
 ```
 
-<!-- ### Generate the PDF report
-
-```bash
-python3 generate_report.py
-```
-
-This reads results from `./results/` and generates `Report.pdf` in the project root.
-
-## Pipeline Steps
-
-1. **Corner Detection** — Detects 9×6 inner checkerboard corners using `cv2.findChessboardCorners` with sub-pixel refinement (`cv2.cornerSubPix`).
-
-2. **Homography Estimation** — Computes a homography H for each image mapping world points (on the Z=0 plane, spaced 21.5mm apart) to detected image points using the Direct Linear Transform (DLT).
-
-3. **Intrinsic Matrix Estimation** — Builds the Vb=0 linear system from all homographies (Zhang's paper Section 3.1) and solves via SVD. Extracts K from the symmetric matrix B = K^{-T} K^{-1} using the closed-form equations in Appendix B.
-
-4. **Extrinsics Estimation** — For each image, computes R and t from K^{-1} H. The rotation matrix is corrected for orthogonality via SVD.
-
-5. **Distortion Initialization** — Sets k1 = k2 = 0 as the initial estimate.
-
-6. **Non-linear Optimization** — Minimizes the total geometric reprojection error over all parameters (K, all R_i, t_i, k1, k2) using Levenberg-Marquardt (`scipy.optimize.least_squares`). The distortion model follows Section 3.3 of Zhang's paper.
-
-7. **Rectification** — Undistorts all images using the optimized K and distortion coefficients via `cv2.undistort`.
-
-8. **Visualization** — Saves corner detection images, reprojection overlays (detected vs. reprojected corners), rectified images, and reprojection on rectified images.
-
-## Output Structure
+<!-- ## Output Structure
 
 ```
 results/
@@ -78,13 +52,6 @@ results/
     └── reproj_rect_IMG_*.jpg
 ```
 
-## Checkerboard Specifications
-
-- Pattern: 10×7 squares (9×6 inner corners)
-- Square size: 21.5 mm
-- Printed on A4 paper
-- X-axis: even number of squares, Y-axis: odd number of squares
-
 ## Results Summary
 
 | Parameter | Value |
@@ -95,4 +62,4 @@ results/
 | cy | 1345.14 |
 | k1 | 0.1731 |
 | k2 | -0.7534 |
-| Mean Reprojection Error | 0.5835 px | -->
+| Mean Reprojection Error | 0.5835 px |  -->
