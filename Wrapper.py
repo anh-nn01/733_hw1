@@ -45,7 +45,7 @@ parser.add_argument('--img_dir', type=str, default='Calibration_Imgs',
 # parser.add_argument('--out_dir', type=str, default='results',
 # 					help='Output directory for results')
 filepath = os.path.dirname(os.path.abspath(__file__))
-out_dir = os.path.join(filepath, 'visuals_/')
+out_dir = os.path.join(filepath, 'visuals/')
 args = parser.parse_args()
 os.makedirs(out_dir, exist_ok=True)
 matplotlib.use('Agg')
