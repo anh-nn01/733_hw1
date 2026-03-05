@@ -39,10 +39,11 @@ SQUARE_SIZE  = 21.5  # given
 parser = argparse.ArgumentParser(description="Zhang's Camera Calibration")
 parser.add_argument('--img_dir', type=str, default='Calibration_Imgs',
 					help='Directory containing calibration images')
-parser.add_argument('--out_dir', type=str, default='results',
-					help='Output directory for results')
+# parser.add_argument('--out_dir', type=str, default='results',
+# 					help='Output directory for results')
+out_dir = './visuals/'
 args = parser.parse_args()
-os.makedirs(args.out_dir, exist_ok=True)
+os.makedirs(out_dir, exist_ok=True)
 matplotlib.use('Agg')
 
 

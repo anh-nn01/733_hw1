@@ -37,29 +37,17 @@ Otherwise, specify path in the following script:
 python3 Wrapper.py --img_dir=<path_to_images>
 ```
 
-<!-- ## Output Structure
 
+
+## IV. Outputs
+Final intrinsics:
 ```
-results/
-├── calibration_results.txt          # Summary of all results
-├── corners_detected/                # Images with detected corners drawn
-│   └── corners_IMG_*.jpg
-├── reprojection/                    # Original images with detected (green) and reprojected (red) corners
-│   └── reproj_IMG_*.jpg
-├── rectified/                       # Undistorted (rectified) images
-│   └── rect_IMG_*.jpg
-└── reproj_on_rectified/             # Rectified images with reprojected corners
-    └── reproj_rect_IMG_*.jpg
+    [[2048.53   -1.83  758.73]
+K = [   0.   2040.75 1345.14]
+    [   0.      0.      1.  ]]
 ```
 
-## Results Summary
-
-| Parameter | Value |
-|-----------|-------|
-| fx | 2048.53 |
-| fy | 2040.75 |
-| cx | 758.73 |
-| cy | 1345.14 |
-| k1 | 0.1731 |
-| k2 | -0.7534 |
-| Mean Reprojection Error | 0.5835 px |  -->
+Final reprojection errors:
+```
+e = 0.58346
+```
