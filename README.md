@@ -1,4 +1,9 @@
 # CMSC 733 HW #1: AutoCalib
+```
+Name: Anh N. Nhu
+Directory ID: anhu
+UID: 119 385 173
+```
 
 ## Overview: Zhang's Camera Calibration
 
