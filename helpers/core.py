@@ -178,6 +178,10 @@ def estimate_extrinsics(K, Hs):
 		R = U@Vt
 		poses.append((R,t))
 
+	with np.printoptions(precision=2, suppress=True):
+		print("\nInitial extrinsics matrix for Image 0:")
+		print(poses[0][0])
+
 	return poses
 
 
