@@ -71,7 +71,7 @@ if __name__ == "__main__":
 	if len(corners) < 3:
 		raise Exception("Need >= 3 valid views.")
 	# visualize
-	save_detected_corners(valid, corners, (BOARD_COLS,BOARD_ROWS), out_dir)
+	save_corners(valid, corners, (BOARD_COLS,BOARD_ROWS), out_dir)
 	print('*'*50)
 	print()
 

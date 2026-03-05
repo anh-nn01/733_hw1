@@ -63,7 +63,7 @@ def detect_corners(image_paths, pattern_size):
 		shapes.append(gray.shape[:2])
 		valid.append(path)
 
-		print(f"[ok] image {idx+1} -> found {len(corners)} corners")
+		# print(f"[ok] image {idx+1} -> found {len(corners)} corners")
 
 	return corners_all, shapes, valid
 

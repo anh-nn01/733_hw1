@@ -17,7 +17,7 @@ from core import *
 #############################
 # Visualization Utilities   #
 #############################
-def save_detected_corners(paths, corners, pattern_size, out_dir='visuals'):
+def save_corners(paths, corners, pattern_size, out_dir='visuals'):
     """Save checkerboard detections."""
     save_dir = os.path.join(out_dir, "step1_corners")
     os.makedirs(save_dir, exist_ok=True)
