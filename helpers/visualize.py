@@ -39,16 +39,16 @@ def save_reprojection(paths, corners, world, K, extr, k, folder_name, out_dir='v
 
         # detected (green)
         for pt in corners[i]:
-            cv2.circle(img,(int(pt[0]),int(pt[1])),6,(0,255,0),2)
+            cv2.circle(img,(int(pt[0]),int(pt[1])),10,(0,255,0),2)
         # projected (red)
         for pt in proj:
-            cv2.circle(img,(int(pt[0]),int(pt[1])),4,(0,0,255),-1)
+            cv2.circle(img,(int(pt[0]),int(pt[1])),6,(0,0,255),-1)
 
         name = os.path.basename(p)
         cv2.imwrite(os.path.join(save_dir,f"reproj_{name}"),img)
 
 
-def save_rectified(paths, list_homography, K, k, h_board, w_board, out_dir='visuals'):
+def save_rectified(paths, list_homography, K, k, h_board, w_board, scale, out_dir='visuals'):
     """Save undistorted images."""
     save_dir = os.path.join(out_dir,"step4_rectified")
     os.makedirs(save_dir, exist_ok=True)
@@ -57,8 +57,15 @@ def save_rectified(paths, list_homography, K, k, h_board, w_board, out_dir='visu
     for idx, p in enumerate(paths):
         img = cv2.imread(p)
         img_undistorted = cv2.undistort(img,K,dist)
+        S = np.array([
+            [scale, 0, 0],
+            [0, scale, 0],
+            [0, 0, 1]
+        ], dtype=np.float32)
+        H_inv = np.linalg.inv(list_homography[idx])
+        H_inv = S @ H_inv
         rect = cv2.warpPerspective(
-            img_undistorted, np.linalg.inv(list_homography[idx]), 
+            img_undistorted, H_inv, 
             (h_board, w_board)
         ) # fix: too much blank space
         # print(rect.shape)
@@ -69,7 +76,7 @@ def save_rectified(paths, list_homography, K, k, h_board, w_board, out_dir='visu
 
 def save_rectified_reprojection(
     paths, corners, world, K, extr, k, 
-    list_homography, h_board, w_board, 
+    list_homography, h_board, w_board, scale,
     out_dir='visuals'
 ):
     """Rectified image with reprojection overlay."""
@@ -85,7 +92,13 @@ def save_rectified_reprojection(
         # 1. Address radial distortion 
         und = cv2.undistort(img, K, dist)
         # 2.Image rectification with homography
+        S = np.array([
+            [scale, 0, 0],
+            [0, scale, 0],
+            [0, 0, 1]
+        ], dtype=np.float32)
         H_inv = np.linalg.inv(list_homography[i])
+        H_inv = S @ H_inv
         rectified_img = cv2.warpPerspective(und, H_inv, (h_board, w_board))
         # 3. Transform DETECTED corners into the rectified space
         # We take the undistorted image points and apply H_inv to see them on the 'flat' board
@@ -102,9 +115,9 @@ def save_rectified_reprojection(
         # 5. Draw the results on the rectified image
         # Detected (undistorted then rectified) in Green
         for pt in rect_corners:
-            cv2.circle(rectified_img, (int(pt[0]), int(pt[1])), 6, (0, 255, 0), 2)
-        # Projected (calculated then rectified) in Red
+            cv2.circle(rectified_img, (int(pt[0]), int(pt[1])), 10, (0, 255, 0), 2)
+        # Projected (calculated then rectified) in Blue
         for pt in rect_proj:
-            cv2.circle(rectified_img, (int(pt[0]), int(pt[1])), 4, (0, 0, 255), -1)
+            cv2.circle(rectified_img, (int(pt[0]), int(pt[1])), 6, (0, 0, 255), -1)
         name = os.path.basename(p)
         cv2.imwrite(os.path.join(save_dir, f"rect_reproj_{name}"), rectified_img)
