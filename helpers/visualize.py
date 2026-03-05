@@ -25,6 +25,10 @@ def save_corners(paths, corners, pattern_size, out_dir='visuals'):
         img = cv2.imread(p)
         pts = corners[i].reshape(-1,1,2).astype(np.float32)
         cv2.drawChessboardCorners(img, pattern_size, pts, True)
+        for corner in corners[i]:
+            x, y = corner.ravel()
+            # Draw a circle with a radius of 10 and thickness of 2
+            cv2.circle(img, (int(x), int(y)), 10, (255, 0, 255), 10)
         name = os.path.basename(p)
         cv2.imwrite(os.path.join(save_dir, f"corners_{name}"), img)
 
@@ -39,10 +43,10 @@ def save_reprojection(paths, corners, world, K, extr, k, folder_name, out_dir='v
 
         # detected (green)
         for pt in corners[i]:
-            cv2.circle(img,(int(pt[0]),int(pt[1])),10,(0,255,0),2)
-        # projected (red)
+            cv2.circle(img,(int(pt[0]),int(pt[1])),20,(0,255,0),10)
+        # projected (purple)
         for pt in proj:
-            cv2.circle(img,(int(pt[0]),int(pt[1])),6,(0,0,255),-1)
+            cv2.circle(img,(int(pt[0]),int(pt[1])),10,(255, 0, 255),10)
 
         name = os.path.basename(p)
         cv2.imwrite(os.path.join(save_dir,f"reproj_{name}"),img)
@@ -115,9 +119,9 @@ def save_rectified_reprojection(
         # 5. Draw the results on the rectified image
         # Detected (undistorted then rectified) in Green
         for pt in rect_corners:
-            cv2.circle(rectified_img, (int(pt[0]), int(pt[1])), 10, (0, 255, 0), 2)
+            cv2.circle(rectified_img, (int(pt[0]), int(pt[1])), 10, (0, 255, 0), 10)
         # Projected (calculated then rectified) in Blue
         for pt in rect_proj:
-            cv2.circle(rectified_img, (int(pt[0]), int(pt[1])), 6, (0, 0, 255), -1)
+            cv2.circle(rectified_img, (int(pt[0]), int(pt[1])), 8, (255, 0, 255), 6)
         name = os.path.basename(p)
         cv2.imwrite(os.path.join(save_dir, f"rect_reproj_{name}"), rectified_img)
