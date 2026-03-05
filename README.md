@@ -26,7 +26,7 @@ pip install -r requirements.txt
 ## III. Usage guide
 
 ### a. Basic (default paths)
-Assuming the calibration images are in `./Calibration_Imgs/`, run the following script to save the results to `./results/`
+Assuming the calibration images are in `./Calibration_Imgs/`, run the following script to save the results to `./visuals/`
 ```bash
 python3 Wrapper.py
 ```
