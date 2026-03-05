@@ -53,10 +53,10 @@ e = 0.58346
 ```
 
 ### Example visualization
-| Image | Description |
-| :--- | :--- |
-| <img src="visuals/step1_corners/corners_IMG_20170209_042634.jpg" width="200" alt="Corners Detection"> | Corners Detection| 
-| <img src="visuals/step2_initial_reprojection/reproj_IMG_20170209_042634.jpg" width="200" alt="Corners Detection"> | Initial reprojection | 
-| <img src="visuals/step3_optimized_reprojection/reproj_IMG_20170209_042634.jpg" width="200" alt="Corners Detection"> | Optimized reprojection| 
-| <img src="visuals/step4_rectified/rect_IMG_20170209_042634.jpg" width="200" alt="Corners Detection"> | Image rectification | 
-| <img src="visuals/step5_rectified_reprojection/rect_reproj_IMG_20170209_042634.jpg" width="200" alt="Corners Detection"> | Image rectification + reprojection| 
+| Description | Example image 1 | Example image 2 |
+| :--- | :--- | :--- |
+| (1) Corners Detection | <img src="visuals/step1_corners/corners_IMG_20170209_042634.jpg" width="200" alt="Corners Detection"> | <img src="visuals/step1_corners/corners_IMG_20170209_042608.jpg" width="200" alt="Corners Detection"> | 
+| (2) Initial reprojection | <img src="visuals/step2_initial_reprojection/reproj_IMG_20170209_042634.jpg" width="200" alt="Corners Detection"> | <img src="visuals/step2_initial_reprojection/reproj_IMG_20170209_042608.jpg" width="200" alt="Corners Detection"> | 
+| (3) Optimized reprojection | <img src="visuals/step3_optimized_reprojection/reproj_IMG_20170209_042634.jpg" width="200" alt="Corners Detection"> | <img src="visuals/step3_optimized_reprojection/reproj_IMG_20170209_042608.jpg" width="200" alt="Corners Detection"> | 
+| (4) Image rectification | <img src="visuals/step4_rectified/rect_IMG_20170209_042634.jpg" width="200" alt="Corners Detection"> | <img src="visuals/step4_rectified/rect_IMG_20170209_042608.jpg" width="200" alt="Corners Detection"> | 
+| (5) Image rectification + reprojection | <img src="visuals/step5_rectified_reprojection/rect_reproj_IMG_20170209_042634.jpg" width="200" alt="Corners Detection"> | <img src="visuals/step5_rectified_reprojection/rect_reproj_IMG_20170209_042608.jpg" width="200" alt="Corners Detection"> | 
