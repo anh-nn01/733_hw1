@@ -21,19 +21,15 @@ pip install -r requirements.txt
 ## Usage guide
 
 ### Basic (default paths)
-
+Assuming the calibration images are in `./Calibration_Imgs/`, run the following script to save the results to `./results/`
 ```bash
 python3 Wrapper.py
 ```
 
-This assumes:
-- Calibration images are in `./Calibration_Imgs/`
-- Results will be saved to `./results/`
-
 ### Custom paths
-
+Otherwise, specify path in the following script:
 ```bash
-python3 Wrapper.py --img_dir <path_to_images> --out_dir <output_directory>
+python3 Wrapper.py --img_dir=<path_to_images> --out_dir=<output_directory>
 ```
 
 <!-- ### Generate the PDF report
