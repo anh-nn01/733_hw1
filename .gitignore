@@ -1,3 +1,6 @@
+# ignore virtual env
+venv/
+
 # ignore data
 Calibration_Imgs.zip
 Calibration_Imgs/
