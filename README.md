@@ -9,7 +9,7 @@ UID: 119 385 173
 
 This project implements Zhang's camera calibration method:
 
-> Zhengyou Zhang, ["A Flexible New Technique for Camera Calibration,"](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/tr98-71.pdf) IEEE Transactions on Pattern Analysis and Machine Intelligence, 2000.
+Zhengyou Zhang: ["A Flexible New Technique for Camera Calibration,"](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/tr98-71.pdf).
 
 Specifically, provided a set of checkerboard calibration images, we:
 1. Estimate the **Camera intrinsic matrix K** ($f_x, f_y, c_x, c_y$)
@@ -34,7 +34,7 @@ python3 Wrapper.py
 ### Custom paths
 Otherwise, specify path in the following script:
 ```bash
-python3 Wrapper.py --img_dir=<path_to_images> --out_dir=<output_directory>
+python3 Wrapper.py --img_dir=<path_to_images>
 ```
 
 <!-- ### Generate the PDF report
