@@ -118,5 +118,10 @@ if __name__ == "__main__":
 	print("Final reprojection error:")
 	print(np.mean(err))
 	# visualization
-	save_rectified(valid, K_opt, k_opt, out_dir)
-	save_rectified_reprojection(valid, corners, world, K_opt, extr_opt, k_opt, out_dir)
+	scale = 2.0 # 1.5
+	h_board, w_board = int((BOARD_COLS) * SQUARE_SIZE * scale), int((BOARD_ROWS) * SQUARE_SIZE * scale)
+	save_rectified(valid, Hs, K_opt, k_opt, h_board, w_board, out_dir)
+	save_rectified_reprojection(
+		valid, corners, world, K_opt, extr_opt, k_opt, 
+		Hs, h_board, w_board, out_dir
+	)

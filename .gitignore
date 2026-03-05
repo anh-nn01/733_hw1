@@ -2,7 +2,7 @@
 venv/
 
 # ignore visualizations => too heavy
-visuals/
+# visuals/
 
 # ignore data
 Calibration_Imgs.zip
